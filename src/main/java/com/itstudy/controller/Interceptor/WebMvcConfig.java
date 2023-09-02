@@ -18,9 +18,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
         registry.addResourceHandler("/static/img/**").
-                addResourceLocations("classpath:/static/img/", "file:static/img/");
+                addResourceLocations("classpath:/static/img/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/img/");
         registry.addResourceHandler("/static/img/user_img/**").
-                addResourceLocations("classpath:/static/img/user_img/", "file:static/img/user_img/");
+                addResourceLocations("classpath:/static/img/user_img/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/img/user_img/");
     }
 }

@@ -20,4 +20,6 @@ import java.util.List;
 @Transactional
 public interface IDocTagService {
     List<DocTag> selectDocTags(Integer docId);
+
+    Boolean insertDocTags(List<DocTag> docTags);
 }

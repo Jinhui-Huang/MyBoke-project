@@ -41,6 +41,15 @@ public interface DocDao {
     List<Doc> selectAllDocs(String userEmail);
 
     /**
+     * Description: selectAllDocsLimit 查询用于展示的文档
+     * @return java.util.List<com.itstudy.domain.Doc>
+     * @author jinhui-huang
+     * @Date 2023/9/2
+     * */
+    @Select("select doc_id, user_email, doc_title, doc_description, doc_date_time from doc limit 20")
+    List<Doc> selectAllDocsLimit();
+
+    /**
      * Description: insertDoc 新增文档
      * @return java.lang.Integer
      * @author jinhui-huang
@@ -49,4 +58,8 @@ public interface DocDao {
     @Insert("insert into doc(user_email, doc_context, doc_title, doc_description) " +
             "VALUES(#{userEmail}, #{docContext}, #{docTitle}, #{docDescription}) ")
     Integer insertDoc(Doc doc);
+
+    /*查询作者新增的最新文档id*/
+    @Select("select max(doc_id) from doc where user_email = #{userEmail}")
+    Long selectNewDocId(String userEmail);
 }

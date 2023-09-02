@@ -8,6 +8,7 @@ import com.itstudy.service.IDocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -42,7 +43,37 @@ public class DocServiceImpl implements IDocService {
     @Override
     public List<Doc> selectAllDocs(String userEmail) {
         try {
-            return docDao.selectAllDocs(userEmail);
+            List<Doc> docs = docDao.selectAllDocs(userEmail);
+            docs.sort((o1, o2) -> o2.getDocId() - o1.getDocId());
+            return docs;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public List<Doc> selectAllDocsLimit() {
+        try {
+            return docDao.selectAllDocsLimit();
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean insertDoc(Doc doc) {
+        try {
+            return docDao.insertDoc(doc) > 0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Integer selectNewDocId(String userEmail) {
+        try {
+            Long docId = docDao.selectNewDocId(userEmail);
+            return Math.max(docId.intValue(), 0);
         } catch (Exception e) {
             throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
         }

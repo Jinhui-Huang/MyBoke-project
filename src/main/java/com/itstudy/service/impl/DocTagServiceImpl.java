@@ -34,4 +34,13 @@ public class DocTagServiceImpl implements IDocTagService {
             throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
         }
     }
+
+    @Override
+    public Boolean insertDocTags(List<DocTag> docTags) {
+        try {
+            return docTagDao.insertDocTags(docTags) > 0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
 }

@@ -22,4 +22,11 @@ public interface IDocService {
     Doc selectDocByUserEmail(Doc doc);
 
     List<Doc> selectAllDocs(String userEmail);
+    List<Doc> selectAllDocsLimit();
+
+    Boolean insertDoc(Doc doc);
+
+    Integer selectNewDocId(String userEmail);
+
+
 }
