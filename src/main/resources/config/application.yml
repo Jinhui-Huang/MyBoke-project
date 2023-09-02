@@ -10,9 +10,9 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sql_store
-    username: mybatis
-    password: mybatis
+    url: jdbc:mysql://localhost:3306/boke_project
+    username: huangjinhui
+    password: huangjinhui
     type: com.alibaba.druid.pool.DruidDataSource
 
 logging:
@@ -23,7 +23,7 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 server:
-  port: 80
+  port: 10086
 ---
 #生产环境
 spring:
@@ -32,9 +32,9 @@ spring:
       on-profile: pro
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sql_store
-    username: mybatis
-    password: mybatis
+    url: jdbc:mysql://localhost:3306/boke_project
+    username: huangjinhui
+    password: huangjinhui
     type: com.alibaba.druid.pool.DruidDataSource
 
 logging:
@@ -45,7 +45,7 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 server:
-  port: 81
+  port: 10087
 ---
 #测试环境
 spring:
@@ -54,9 +54,9 @@ spring:
       on-profile: test
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sql_store
-    username: mybatis
-    password: mybatis
+    url: jdbc:mysql://localhost:3306/boke_project
+    username: huangjinhui
+    password: huangjinhui
     type: com.alibaba.druid.pool.DruidDataSource
 
 logging:
@@ -67,7 +67,7 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 server:
-  port: 82
+  port: 10088
 
 #key 前面必须要有空格
 #以后主要用这种格式的文件来配置

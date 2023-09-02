@@ -34,7 +34,7 @@ public class ProjectInterceptor implements HandlerInterceptor {
         System.out.println(handlerMethod);
         System.out.println(handler);*/
         //return HandlerInterceptor.super.preHandle(request, response, handler);
-        System.out.println("preHandle...");
+        System.out.println("preHandle..." + request);
         return true;
     }
 
