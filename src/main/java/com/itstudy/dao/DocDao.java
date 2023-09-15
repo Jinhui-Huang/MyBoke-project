@@ -1,9 +1,7 @@
 package com.itstudy.dao;
 
 import com.itstudy.domain.Doc;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public interface DocDao {
      * @author jinhui-huang
      * @Date 2023/9/1
      * */
-    @Select("select doc_context, doc_description, doc_title from doc where doc_id = #{docId} and user_email = #{userEmail}")
+    @Select("select doc_context, doc_description, doc_title, doc_sees from doc where doc_id = #{docId}")
     Doc selectDocByEmail(Doc doc);
 
 
@@ -37,7 +35,7 @@ public interface DocDao {
      * @author jinhui-huang
      * @Date 2023/9/2
      * */
-    @Select("select doc_id, doc_title, doc_description, doc_date_time from doc where user_email = #{userEmail}")
+    @Select("select doc_id, doc_title, doc_description, doc_date_time, doc_sees from doc where user_email = #{userEmail}")
     List<Doc> selectAllDocs(String userEmail);
 
     /**
@@ -46,7 +44,7 @@ public interface DocDao {
      * @author jinhui-huang
      * @Date 2023/9/2
      * */
-    @Select("select doc_id, user_email, doc_title, doc_description, doc_date_time from doc limit 20")
+    @Select("select doc_id, user_email, doc_title, doc_description, doc_date_time, doc_sees from doc order by doc_date_time desc limit 20 ")
     List<Doc> selectAllDocsLimit();
 
     /**
@@ -59,7 +57,41 @@ public interface DocDao {
             "VALUES(#{userEmail}, #{docContext}, #{docTitle}, #{docDescription}) ")
     Integer insertDoc(Doc doc);
 
-    /*查询作者新增的最新文档id*/
+    /**
+     * Description: selectNewDocId 查询作者新增的最新文档id
+     * @return java.lang.Long
+     * @author jinhui-huang
+     * @Date 2023/9/4
+     * */
     @Select("select max(doc_id) from doc where user_email = #{userEmail}")
     Long selectNewDocId(String userEmail);
+
+    /**
+     * Description: updateDocSee 更新文章的阅读量
+     * @return java.lang.Integer
+     * @author jinhui-huang
+     * @Date 2023/9/8
+     * */
+    @Update("update doc set doc_sees = doc_sees + 1 where doc_id = #{docId}")
+    Integer updateDocSee(Integer docId);
+
+    /**
+     * Description: updateDoc 更新文章的内容包括标题， 描述， 和内容
+     * @return java.lang.Integer
+     * @author jinhui-huang
+     * @Date 2023/9/8
+     * */
+    @Update("update doc set doc_title = #{docTitle}, doc_description = #{docDescription}, doc_context = #{docContext} " +
+            "where doc_id = #{docId}")
+    Integer updateDoc(Doc doc);
+
+    /**
+     * Description: deleteDoc 根据文档id删除文档
+     * @return java.lang.Integer
+     * @author jinhui-huang
+     * @Date 2023/9/8
+     * */
+    @Delete("delete from doc where doc_id = #{docId}")
+    Integer deleteDoc(Integer docId);
+
 }

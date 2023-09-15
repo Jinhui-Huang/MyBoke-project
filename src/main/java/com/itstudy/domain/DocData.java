@@ -1,32 +1,26 @@
 package com.itstudy.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 /**
- * Description: Doc
+ * Description: DocData
  * <br></br>
- * className: Doc
+ * className: DocData
  * <br></br>
  * packageName: com.itstudy.domain
  *
  * @author jinhui-huang
  * @version 1.0
  * @email 2634692718@qq.com
- * @Date: 2023/9/1 11:04
+ * @Date: 2023/9/6 09:40
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Doc{
-    private Integer docId;
+public class DocData {
     private String userEmail;
-    private String docContext;
+    private Integer docId;
     private String docTitle;
     private String docDescription;
-    private LocalDateTime docDateTime;
     private Integer docSees;
+    private Integer clicks;
+    private Integer collections;
 }

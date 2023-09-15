@@ -1,12 +1,13 @@
 package com.itstudy.controller.Interceptor;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Endpoint;
+
 /**
  * 配置拦截器实现HandlerInterceptor接口
  * 配置拦截代码之前之后进行的代码操作

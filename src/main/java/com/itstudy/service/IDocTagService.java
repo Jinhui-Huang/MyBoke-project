@@ -22,4 +22,10 @@ public interface IDocTagService {
     List<DocTag> selectDocTags(Integer docId);
 
     Boolean insertDocTags(List<DocTag> docTags);
+
+    Boolean deleteDocTagByDocId(Integer docId);
+
+    Boolean deleteDocTagByTagId(List<DocTag> docTags);
+
+    Boolean updateDocTagByTagId(List<DocTag> docTags);
 }

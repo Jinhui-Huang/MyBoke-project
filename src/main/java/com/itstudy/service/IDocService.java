@@ -28,5 +28,11 @@ public interface IDocService {
 
     Integer selectNewDocId(String userEmail);
 
+    Boolean updateDocSee(Integer docId);
+
+    Boolean deleteDoc(Integer docId);
+
+    Boolean updateDoc(Doc doc);
+
 
 }

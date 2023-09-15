@@ -43,4 +43,31 @@ public class DocTagServiceImpl implements IDocTagService {
             throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
         }
     }
+
+    @Override
+    public Boolean deleteDocTagByDocId(Integer docId) {
+        try {
+            return docTagDao.deleteDocTagByDocId(docId) >= 0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean deleteDocTagByTagId(List<DocTag> docTags) {
+        try {
+            return docTagDao.deleteDocTagByTagId(docTags) > 0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean updateDocTagByTagId(List<DocTag> docTags) {
+        try {
+            return docTagDao.updateDocTagByTagId(docTags) > 0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
 }

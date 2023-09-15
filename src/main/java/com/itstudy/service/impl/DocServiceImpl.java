@@ -26,7 +26,6 @@ import java.util.List;
 @Service
 public class DocServiceImpl implements IDocService {
 
-
     @Autowired
     private DocDao docDao;
 
@@ -74,6 +73,36 @@ public class DocServiceImpl implements IDocService {
         try {
             Long docId = docDao.selectNewDocId(userEmail);
             return Math.max(docId.intValue(), 0);
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean updateDocSee(Integer docId) {
+        try {
+            Integer integer = docDao.updateDocSee(docId);
+            return integer == 1;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean deleteDoc(Integer docId) {
+        try {
+            Integer integer = docDao.deleteDoc(docId);
+            return integer == 1;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
+        }
+    }
+
+    @Override
+    public Boolean updateDoc(Doc doc) {
+        try {
+            Integer integer = docDao.updateDoc(doc);
+            return integer == 1;
         } catch (Exception e) {
             throw new SystemException(Code.SYSTEM_TIMEOUT_ERR, "服务器超时, 请重试!", e);
         }

@@ -1,6 +1,7 @@
 package com.itstudy.code;
 
 public class Code {
+    private Code(){}
     /**
      * 1 代表成功
      * 0 代表失败

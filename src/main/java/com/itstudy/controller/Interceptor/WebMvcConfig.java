@@ -21,7 +21,13 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/img/**").
                 addResourceLocations("classpath:/static/img/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/img/");
+
         registry.addResourceHandler("/static/img/user_img/**").
                 addResourceLocations("classpath:/static/img/user_img/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/img/user_img/");
+
+        registry.addResourceHandler("/static/js/**").
+                addResourceLocations("classpath:/static/js/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/js/");
+        registry.addResourceHandler("/static/css/**").
+                addResourceLocations("classpath:/static/css/", "file:/home/huian/IdeaProjects/SpringBoot-Demo01/src/main/resources/static/css/");
     }
 }
